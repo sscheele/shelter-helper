@@ -7,6 +7,7 @@
     tools:context="com.a2340.shelterhelper.LandingScreen">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome! Login or sign up?"
@@ -20,16 +21,20 @@
         android:id="@+id/btn_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="137dp"
+        android:layout_marginEnd="47dp"
         android:text="Sign Up"
-        tools:layout_editor_absoluteX="249dp"
-        tools:layout_editor_absoluteY="326dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_landing_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
         android:text="Login"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="326dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_signup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_signup" />
 
 </android.support.constraint.ConstraintLayout>

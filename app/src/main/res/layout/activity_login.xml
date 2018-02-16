@@ -10,37 +10,44 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="98dp"
         android:fontFamily="monospace"
         android:text="Login"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="98dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/tb_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="295dp" />
+        app:layout_constraintStart_toStartOf="@+id/tb_username"
+        app:layout_constraintTop_toBottomOf="@+id/tb_username" />
 
     <EditText
         android:id="@+id/tb_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Username"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="221dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
         android:background="@android:color/holo_green_light"
         android:text="Login"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="378dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_password" />
 </android.support.constraint.ConstraintLayout>
