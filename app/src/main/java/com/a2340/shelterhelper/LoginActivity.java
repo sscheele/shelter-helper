@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = ((EditText) findViewById(R.id.tb_username)).getText().toString();
                 EditText passBox = (EditText) findViewById(R.id.tb_password);
                 String password = passBox.getText().toString();
-                if (username != "username" || password != "password") {
+                if (!username.equals("username") || !password.equals("password")) {
                     passBox.setBackgroundColor(Color.RED);
                     return;
                 }
