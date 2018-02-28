@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="72dp"
         android:fontFamily="monospace"
         android:text="Login"
         android:textSize="30sp"
@@ -22,7 +22,7 @@
         android:id="@+id/tb_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="76dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/tb_username"
@@ -32,11 +32,11 @@
         android:id="@+id/tb_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Username"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -50,5 +50,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tb_password" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        app:layout_constraintStart_toStartOf="@+id/tb_username"
+        app:layout_constraintTop_toTopOf="@+id/tb_username" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        app:layout_constraintStart_toStartOf="@+id/tb_password"
+        app:layout_constraintTop_toTopOf="@+id/tb_password" />
 
 </android.support.constraint.ConstraintLayout>
