@@ -20,10 +20,16 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = ((EditText) findViewById(R.id.tb_username)).getText().toString();
+                EditText userBox = (EditText) findViewById(R.id.tb_username);
+                String username = userBox.getText().toString();
                 EditText passBox = (EditText) findViewById(R.id.tb_password);
                 String password = passBox.getText().toString();
-                if (!username.equals("username") || !password.equals("password")) {
+                User match = User.findByUsername(username);
+                if (match == null) {
+                    userBox.setBackgroundColor(Color.RED);
+                    return;
+                }
+                if (!password.equals(match.getPassword())) {
                     passBox.setBackgroundColor(Color.RED);
                     return;
                 }

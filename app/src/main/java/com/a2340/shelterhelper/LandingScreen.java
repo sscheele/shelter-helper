@@ -22,5 +22,13 @@ public class LandingScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        Button registerBtn = (Button) findViewById(R.id.btn_landing_register);
+        registerBtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(currActivity, RegisterActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
