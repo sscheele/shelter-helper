@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
                 boolean isAdmin = ((RadioButton) findViewById(R.id.register_rb_isAdmin)).isChecked();
                 User newUser = new User(name, username, password, isAdmin);
                 User.register(newUser);
+                finish();
             }
         });
     }
