@@ -14,7 +14,6 @@
         android:layout_marginTop="18dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Username"
         app:layout_constraintStart_toStartOf="@+id/register_tb_name"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
@@ -25,7 +24,6 @@
         android:layout_marginTop="18dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
