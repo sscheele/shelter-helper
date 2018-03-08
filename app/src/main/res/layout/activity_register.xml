@@ -8,6 +8,16 @@
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
+        android:id="@+id/register_tb_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <EditText
         android:id="@+id/register_tb_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,15 +27,6 @@
         app:layout_constraintStart_toStartOf="@+id/register_tb_name"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
-    <EditText
-        android:id="@+id/register_tb_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/register_tb_password"
