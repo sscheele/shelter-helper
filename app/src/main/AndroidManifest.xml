@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".shelter_detail_view"></activity>
     </application>
 
 </manifest>

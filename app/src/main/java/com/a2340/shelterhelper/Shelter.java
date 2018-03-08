@@ -2,11 +2,13 @@ package com.a2340.shelterhelper;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
+
 /**
  * Created by sam on 3/7/18.
  */
 @IgnoreExtraProperties
-public class Shelter {
+public class Shelter implements Serializable {
     public String address;
     public String capacity;
     public double latitude;
