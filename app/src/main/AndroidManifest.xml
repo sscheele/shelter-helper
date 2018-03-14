@@ -19,7 +19,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".shelter_detail_view"></activity>
+        <activity android:name=".shelter_detail_view" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>
