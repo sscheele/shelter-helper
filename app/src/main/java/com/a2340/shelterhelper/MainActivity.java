@@ -23,7 +23,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
-    private ArrayAdapter<String> listAdapter;
+    private ShelterAdapter listAdapter;
+
+    public static String searchQuery = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +34,18 @@ public class MainActivity extends AppCompatActivity {
         final Context currContext = this;
 
         final ListView shelterListView = (ListView) findViewById(R.id.listview_shelter);
-        final ArrayList<String> shelterNames = new ArrayList<>();
+        //final ArrayList<String> shelterNames = new ArrayList<>();
         final ArrayList<Shelter> shelters = new ArrayList<>();
-        listAdapter = new ArrayAdapter<String>(this, R.layout.shelter_list_item, R.id.shelter_list_item_text, shelterNames);
+        listAdapter = new ShelterAdapter(this, shelters);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.orderByChild("name").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Shelter newShelter = dataSnapshot.getValue(Shelter.class);
-                listAdapter.add(newShelter.name);
-                shelters.add(newShelter);
+                listAdapter.add(newShelter);
+                //shelters.add(newShelter);
+
             }
 
             @Override
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent next = new Intent(currContext, shelter_detail_view.class);
-                next.putExtra("shelter", shelters.get(i));
+                next.putExtra("shelter", ((Shelter) adapterView.getItemAtPosition(i)));
                 startActivity(next);
             }
         });
@@ -95,5 +98,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (MainActivity.searchQuery != null) {
+            listAdapter.getFilter().filter(MainActivity.searchQuery);
+            MainActivity.searchQuery = null;
+        }
     }
 }

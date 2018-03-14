@@ -1,35 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.a2340.shelterhelper.SearchActivity">
+    tools:context="com.a2340.shelterhelper.SearchActivity"> -->
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="355dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerVertical="true"
+    android:padding="16dp" >
+
+    <TextView
+        android:id="@+id/filterName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        android:text="Search"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="446dp" />
+        android:text="Filter by name"
+        android:layout_marginBottom="10dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editName"
         android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="49dp" />
+        android:layout_marginBottom="20dp" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/filterAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filter by name"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
-</android.support.constraint.ConstraintLayout>
+        android:text="Filter by age"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/editAge"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/filterGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter by gender"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/editGender"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="70dp" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:text="Search" />
+
+</LinearLayout>
+<!-- </android.support.constraint.ConstraintLayout> -->
