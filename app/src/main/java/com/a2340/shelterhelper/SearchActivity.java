@@ -1,5 +1,6 @@
 package com.a2340.shelterhelper;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +44,17 @@ public class SearchActivity extends AppCompatActivity {
                 }
 
                 finish();
+            }
+        });
+
+        final Activity currActivity = this;
+        Button cancelBtn = (Button) findViewById(R.id.cancel);
+        cancelBtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(currActivity, MainActivity.class);
+                startActivity(i);
+                //finish();
             }
         });
 

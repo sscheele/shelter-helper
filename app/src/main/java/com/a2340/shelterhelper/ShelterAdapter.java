@@ -100,7 +100,7 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
                             if(data.contains(constraint_string)) {
                                 filteredArrList.add(origShelterArray.get(i));
                             }
-                        } else {
+                        } else if (SearchActivity.filterCategory.equals("name")){
                             data = origShelterArray.get(i).name.toLowerCase();
                             if(data.contains(constraint_string)) {
                                 filteredArrList.add(origShelterArray.get(i));
