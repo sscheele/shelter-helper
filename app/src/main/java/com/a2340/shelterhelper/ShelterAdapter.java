@@ -83,9 +83,28 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
                     final String constraint_string = constraint.toString().toLowerCase();
 
                     for (int i = 0; i < origShelterArray.size(); i++) {
-                        String data = origShelterArray.get(i).name.toLowerCase();
-                        if(data.contains(constraint_string)) {
-                            filteredArrList.add(origShelterArray.get(i));
+                        String data;
+                        if (SearchActivity.filterCategory.equals("gender")) {
+                            data = origShelterArray.get(i).restrictions.toLowerCase();
+                            if (constraint_string.equals("male")) {
+                                if(!data.contains("women")) {
+                                    filteredArrList.add(origShelterArray.get(i));
+                                }
+                            } else if (constraint_string.equals("female")) {
+                                if (!data.contains("men") || data.contains("women")) {
+                                    filteredArrList.add(origShelterArray.get(i));
+                                }
+                            }
+                        } else if (SearchActivity.filterCategory.equals("age")) {
+                            data = origShelterArray.get(i).restrictions.toLowerCase();
+                            if(data.contains(constraint_string)) {
+                                filteredArrList.add(origShelterArray.get(i));
+                            }
+                        } else {
+                            data = origShelterArray.get(i).name.toLowerCase();
+                            if(data.contains(constraint_string)) {
+                                filteredArrList.add(origShelterArray.get(i));
+                            }
                         }
                     }
 

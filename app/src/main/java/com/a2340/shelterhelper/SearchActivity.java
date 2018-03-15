@@ -10,8 +10,10 @@ import android.widget.EditText;
 
 public class SearchActivity extends AppCompatActivity {
 
+    public static String filterCategory;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
@@ -30,10 +32,13 @@ public class SearchActivity extends AppCompatActivity {
                 String searchGender = genderBox.getText().toString();
 
                 if (!searchName.isEmpty()) {
+                    filterCategory = "name";
                     MainActivity.searchQuery = searchName;
                 } else if (!searchAge.isEmpty()) {
+                    filterCategory = "age";
                     MainActivity.searchQuery = searchAge;
                 } else if (!searchGender.isEmpty()) {
+                    filterCategory = "gender";
                     MainActivity.searchQuery = searchGender;
                 }
 
