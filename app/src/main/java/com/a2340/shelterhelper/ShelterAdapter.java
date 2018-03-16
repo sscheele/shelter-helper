@@ -87,11 +87,11 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
                         if (SearchActivity.filterCategory.equals("gender")) {
                             data = origShelterArray.get(i).restrictions.toLowerCase();
                             if (constraint_string.equals("male")) {
-                                if(!data.contains("women")) {
+                                if(data.contains("men") && !data.contains("women")) {
                                     filteredArrList.add(origShelterArray.get(i));
                                 }
                             } else if (constraint_string.equals("female")) {
-                                if (!data.contains("men") || data.contains("women")) {
+                                if (data.contains("women")) {
                                     filteredArrList.add(origShelterArray.get(i));
                                 }
                             }
