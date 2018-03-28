@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,17 +38,25 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new ArrayAdapter<String>(this, R.layout.shelter_list_item, R.id.shelter_list_item_text, shelterNames);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.keepSynced(true);
         mDatabase.orderByChild("name").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Shelter newShelter = dataSnapshot.getValue(Shelter.class);
                 listAdapter.add(newShelter.name);
                 shelters.add(newShelter);
+                Log.i("SHELTADD", "" + newShelter.key);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                Shelter changedShelter = dataSnapshot.getValue(Shelter.class);
+                for (int i = 0; i < shelters.size(); i++) {
+                    if (shelters.get(i).name.equals(changedShelter.name)) {
+                        shelters.set(i, changedShelter);
+                        return;
+                    }
+                }
             }
 
             @Override

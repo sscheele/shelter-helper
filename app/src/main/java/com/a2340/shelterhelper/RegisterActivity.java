@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = ((EditText) findViewById(R.id.register_tb_password)).getText().toString();
                 boolean isAdmin = ((RadioButton) findViewById(R.id.register_rb_isAdmin)).isChecked();
                 User newUser = new User(name, username, password, isAdmin);
-                User.register(newUser);
+                LocalUsers.register(currActivity, newUser);
                 finish();
             }
         });

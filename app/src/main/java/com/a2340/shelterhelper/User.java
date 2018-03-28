@@ -1,37 +1,36 @@
 package com.a2340.shelterhelper;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.widget.EditText;
+
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by sam on 2/27/18.
  */
 
-public class User {
+public class User implements Serializable {
     private String name;
     private String username;
     private String password;
     private boolean isAdmin;
-    private static ArrayList<User> allUsers = new ArrayList<>();
+
 
     User(String name, String username, String password, boolean isAdmin) {
         this.name = name;
         this.password = password;
         this.username = username;
         this.isAdmin = isAdmin;
-    }
-
-    public static boolean register(User u) {
-        allUsers.add(u);
-        return true;
-    }
-
-    public static User findByUsername(String username) {
-        for (User u : allUsers) {
-            if (u.getUsername().equals(username)) {
-                return u;
-            }
-        }
-        return null;
     }
 
     public String getName() {

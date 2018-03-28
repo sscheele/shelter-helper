@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Button loginBtn = (Button) findViewById(R.id.btn_login);
         final Activity currActivity = this;
+        LocalUsers.readInUsers(this);
         loginBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,13 +25,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = userBox.getText().toString();
                 EditText passBox = (EditText) findViewById(R.id.tb_password);
                 String password = passBox.getText().toString();
-                User match = User.findByUsername(username);
-                if (match == null) {
-                    userBox.setBackgroundColor(Color.RED);
-                    return;
-                }
-                if (!password.equals(match.getPassword())) {
-                    passBox.setBackgroundColor(Color.RED);
+                if (!LocalUsers.tryLogin(username, password, userBox, passBox)) {
                     return;
                 }
                 Intent i = new Intent(currActivity, MainActivity.class);
