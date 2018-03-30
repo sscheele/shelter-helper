@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class LocalUsers {
     private static ArrayList<User> allUsers = new ArrayList<>();
-    private static String currentUser = "";
+    private static User currentUser;
 
     public static void readInUsers(Context c) {
         try {
@@ -37,7 +37,7 @@ public class LocalUsers {
         }
     }
 
-    public static String getCurrentUser() {
+    public static User getCurrentUser() {
         return currentUser;
     }
 
@@ -51,7 +51,7 @@ public class LocalUsers {
             passBox.setBackgroundColor(Color.RED);
             return false;
         }
-        currentUser = username;
+        currentUser = match;
         return true;
     }
 

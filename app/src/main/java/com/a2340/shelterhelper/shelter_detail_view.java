@@ -31,6 +31,9 @@ public class shelter_detail_view extends AppCompatActivity {
         reserveBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (LocalUsers.getCurrentUser().getSpotsReserved() != 0) {
+                    return;
+                }
                 Bundle b = getIntent().getExtras();
                 Shelter s = (Shelter) b.get("shelter");
                 int i = Integer.parseInt(((EditText) findViewById(R.id.reserve_number_box)).getText().toString());
@@ -40,7 +43,21 @@ public class shelter_detail_view extends AppCompatActivity {
                 s.capacity -= i;
                 s.registered = s.registered.substring(0, s.registered.length() - 1) + ", " + LocalUsers.getCurrentUser() + "]";
                 mDatabase.child("" + s.key).setValue(s);
-                finish();
+                LocalUsers.getCurrentUser().setReservedBedAt(s.key);
+                LocalUsers.getCurrentUser().setSpotsReserved(i);
+            }
+        });
+
+        Button releaseBtn = findViewById(R.id.release_bed_btn);
+        releaseBtn.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Bundle b = getIntent().getExtras();
+                Shelter s = (Shelter) b.get("shelter");
+                s.capacity += LocalUsers.getCurrentUser().getSpotsReserved();
+                LocalUsers.getCurrentUser().setSpotsReserved(0);
+                LocalUsers.getCurrentUser().setReservedBedAt(-1);
+                mDatabase.child("" + s.key).setValue(s);
             }
         });
     }

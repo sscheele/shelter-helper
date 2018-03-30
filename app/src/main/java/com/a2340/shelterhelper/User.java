@@ -24,13 +24,32 @@ public class User implements Serializable {
     private String username;
     private String password;
     private boolean isAdmin;
+    private int reservedBedAt = -1;
+    private int spotsReserved = 0;
 
+    public void setSpotsReserved(int spotsReserved) {
+        this.spotsReserved = spotsReserved;
+    }
+
+    public int getSpotsReserved() {
+        return spotsReserved;
+    }
 
     User(String name, String username, String password, boolean isAdmin) {
         this.name = name;
         this.password = password;
         this.username = username;
         this.isAdmin = isAdmin;
+    }
+
+
+
+    public void setReservedBedAt(int reserved) {
+        reservedBedAt = reserved;
+    }
+
+    public int getReservedBedAt() {
+        return reservedBedAt;
     }
 
     public String getName() {
