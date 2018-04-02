@@ -45,8 +45,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Shelter newShelter = dataSnapshot.getValue(Shelter.class);
-                listAdapter.add(newShelter);
+                //listAdapter.add(newShelter);
                 shelters.add(newShelter);
+                listAdapter.notifyDataSetChanged();
                 Log.i("SHELTADD", "" + newShelter.key);
             }
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < shelters.size(); i++) {
                     if (shelters.get(i).name.equals(changedShelter.name)) {
                         shelters.set(i, changedShelter);
+                        listAdapter.notifyDataSetChanged();
                         return;
                     }
                 }
