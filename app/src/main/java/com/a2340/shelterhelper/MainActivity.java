@@ -25,18 +25,19 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private ShelterAdapter listAdapter;
+    public static ArrayList<Shelter> shelters;
 
     public static String searchQuery = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Context currContext = this;
 
         final ListView shelterListView = (ListView) findViewById(R.id.listview_shelter);
         //final ArrayList<String> shelterNames = new ArrayList<>();
-        final ArrayList<Shelter> shelters = new ArrayList<>();
+        shelters = new ArrayList<>();
         listAdapter = new ShelterAdapter(this, shelters);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();

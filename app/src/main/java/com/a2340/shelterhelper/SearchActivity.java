@@ -52,8 +52,10 @@ public class SearchActivity extends AppCompatActivity {
         cancelBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //ShelterAdapter.filteredArrList = MainActivity.shelters;
                 Intent i = new Intent(currActivity, MainActivity.class);
                 startActivity(i);
+
                 //finish();
             }
         });

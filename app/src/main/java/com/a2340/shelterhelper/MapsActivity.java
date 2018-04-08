@@ -39,8 +39,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        /*LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+
+        if (MainActivity.searchQuery == null) {
+            for (int i = 0; i < MainActivity.shelters.size(); i++) {
+                LatLng shelterLocation = new LatLng(MainActivity.shelters.get(i).latitude, MainActivity.shelters.get(i).longitude);
+                mMap.addMarker(new MarkerOptions().position(shelterLocation).title(MainActivity.shelters.get(i).name + " " + MainActivity.shelters.get(i).phone));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(shelterLocation));
+            }
+        } else {
+            for (int i = 0; i < ShelterAdapter.filteredArrList.size(); i++) {
+                LatLng shelterLocation = new LatLng(ShelterAdapter.filteredArrList.get(i).latitude, ShelterAdapter.filteredArrList.get(i).longitude);
+                mMap.addMarker(new MarkerOptions().position(shelterLocation).title(ShelterAdapter.filteredArrList.get(i).name + " " + ShelterAdapter.filteredArrList.get(i).phone));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(shelterLocation));
+            }
+        }
     }
 }

@@ -19,7 +19,8 @@ import java.util.ArrayList;
 public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable {
 
     private ArrayList<Shelter> shelterArray;
-    private ArrayList<Shelter> origShelterArray;
+    public static ArrayList<Shelter> origShelterArray;
+    public static ArrayList<Shelter> filteredArrList;
 
     public ShelterAdapter(Context context, ArrayList<Shelter> list) {
         super(context, 0, list);
@@ -62,7 +63,7 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
             @Override
             protected FilterResults performFiltering(final CharSequence constraint) {
                 final FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
-                final ArrayList<Shelter> filteredArrList = new ArrayList();
+                filteredArrList = new ArrayList();
 
                 if (origShelterArray == null) {
                     origShelterArray = new ArrayList(shelterArray); // saves the original data in mOriginalValues
