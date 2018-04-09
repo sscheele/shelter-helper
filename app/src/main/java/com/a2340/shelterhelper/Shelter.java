@@ -9,8 +9,9 @@ import java.io.Serializable;
 /**
  * Created by sam on 3/7/18.
  */
+@SuppressWarnings({"PublicField", "DefaultFileTemplate"})
 @IgnoreExtraProperties
-public class Shelter implements Serializable {
+class Shelter implements Serializable {
     public String address;
     public int capacity;
     public double latitude;
@@ -18,7 +19,7 @@ public class Shelter implements Serializable {
     public String phone;
     public int key;
     public String name;
-    public String notes;
+    private String notes;
     public String restrictions;
     public String registered;
 
@@ -26,7 +27,8 @@ public class Shelter implements Serializable {
 
     }
 
-    public Shelter(String address, int capacity, double latitude, double longitude, String phone, int key, String name, String notes, String restrictions, String registered) {
+    @SuppressWarnings("SameParameterValue")
+    public Shelter(String address, int capacity, double latitude, double longitude, String phone, int key, String name, String restrictions, String registered) {
         this.address = address;
         this.capacity = capacity;
         this.latitude = latitude;
@@ -34,7 +36,6 @@ public class Shelter implements Serializable {
         this.phone = phone;
         this.key = key;
         this.name = name;
-        this.notes = notes;
         this.restrictions = restrictions;
         this.registered = registered;
     }

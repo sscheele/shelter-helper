@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("ChainedMethodCall")
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity {
     private ShelterAdapter listAdapter;
     public static ArrayList<Shelter> shelters;

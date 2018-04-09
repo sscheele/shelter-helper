@@ -10,8 +10,8 @@ import com.google.firebase.FirebaseOptions;
  * Created by sam on 3/7/18.
  */
 
-@SuppressWarnings("ChainedMethodCall")
-public abstract class Initialization extends Application{
+@SuppressWarnings({"ChainedMethodCall", "DefaultFileTemplate"})
+class Initialization extends Application{
     @Override
     public void onCreate() {
         super.onCreate();

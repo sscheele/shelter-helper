@@ -18,7 +18,7 @@ import java.util.List;
  * Created by sanskriti on 3/14/18.
  */
 
-@SuppressWarnings({"AssignmentToStaticFieldFromInstanceMethod", "AssignmentToCollectionOrArrayFieldFromParameter", "ChainedMethodCall", "LiteralAsArgToStringEquals", "IfCanBeSwitch"})
+@SuppressWarnings("ALL")
 public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable {
 
     private final ArrayList<Shelter> shelterArray;

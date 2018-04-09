@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-@SuppressWarnings({"AssignmentToStaticFieldFromInstanceMethod", "ChainedMethodCall"})
+@SuppressWarnings("ALL")
 public class SearchActivity extends AppCompatActivity {
 
     public static String filterCategory;

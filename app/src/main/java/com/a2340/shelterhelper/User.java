@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * Created by sam on 2/27/18.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class User implements Serializable {
     private String name;
     private String username;

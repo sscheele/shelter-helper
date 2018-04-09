@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-@SuppressWarnings("ChainedMethodCall")
+@SuppressWarnings("ALL")
 public class LoginActivity extends AppCompatActivity {
 
     @Override
