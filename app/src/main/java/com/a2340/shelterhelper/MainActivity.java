@@ -3,6 +3,7 @@ package com.a2340.shelterhelper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,11 +23,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("ChainedMethodCall")
 public class MainActivity extends AppCompatActivity {
-    private DatabaseReference mDatabase;
     private ShelterAdapter listAdapter;
     public static ArrayList<Shelter> shelters;
 
+    @Nullable
     public static String searchQuery = null;
 
     @Override
@@ -37,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         final ListView shelterListView = (ListView) findViewById(R.id.listview_shelter);
         //final ArrayList<String> shelterNames = new ArrayList<>();
+        //noinspection AssignmentToStaticFieldFromInstanceMethod
         shelters = new ArrayList<>();
         listAdapter = new ShelterAdapter(this, shelters);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.keepSynced(true);
         mDatabase.orderByChild("name").addChildEventListener(new ChildEventListener() {
             @Override
@@ -126,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (MainActivity.searchQuery != null) {
             listAdapter.getFilter().filter(MainActivity.searchQuery);
+            //noinspection AssignmentToStaticFieldFromInstanceMethod
             MainActivity.searchQuery = null;
         }
     }

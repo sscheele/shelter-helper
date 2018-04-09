@@ -1,5 +1,6 @@
 package com.a2340.shelterhelper;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,22 +12,25 @@ import android.content.Context;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sanskriti on 3/14/18.
  */
 
+@SuppressWarnings({"AssignmentToStaticFieldFromInstanceMethod", "AssignmentToCollectionOrArrayFieldFromParameter", "ChainedMethodCall", "LiteralAsArgToStringEquals", "IfCanBeSwitch"})
 public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable {
 
-    private ArrayList<Shelter> shelterArray;
-    public static ArrayList<Shelter> origShelterArray;
-    public static ArrayList<Shelter> filteredArrList;
+    private final ArrayList<Shelter> shelterArray;
+    public static List<Shelter> origShelterArray;
+    public static List<Shelter> filteredArrList;
 
     public ShelterAdapter(Context context, ArrayList<Shelter> list) {
         super(context, 0, list);
         this.shelterArray = list;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
@@ -75,7 +79,7 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
                  *  else does the Filtering and returns FilteredArrList(Filtered)
                  *
                  ********/
-                if (constraint == null || constraint.length() == 0) {
+                if ((constraint == null) || (constraint.length() == 0)) {
 
                     // set the Original result to return
                     results.count = origShelterArray.size();

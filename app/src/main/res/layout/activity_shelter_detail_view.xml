@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.a2340.shelterhelper.shelter_detail_view"
-    tools:layout_editor_absoluteY="81dp"> -->
+
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:shrinkColumns="1">
@@ -20,7 +15,8 @@
             android:layout_marginStart="10dp"
             android:text="Name"
             android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
         <!--app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"-->
 
@@ -31,7 +27,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:text="Name TextView"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
             <!--app:layout_constraintBottom_toTopOf="@+id/textView17"
             app:layout_constraintStart_toEndOf="@+id/textView17"-->
 
@@ -47,7 +44,8 @@
             android:layout_marginStart="10dp"
             android:text="Gender"
             android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
         <!--app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17"-->
 
@@ -58,7 +56,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:text="Gender TextView"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
             <!--app:layout_constraintStart_toStartOf="@+id/capacity_tv"
             app:layout_constraintTop_toBottomOf="@+id/capacity_tv"-->
     </TableRow>
@@ -72,7 +71,8 @@
             android:layout_marginStart="10dp"
             android:text="Capacity"
             android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
             <!--app:layout_constraintStart_toStartOf="@+id/nameDetailView"
             app:layout_constraintTop_toBottomOf="@+id/nameDetailView"-->
 
@@ -83,7 +83,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
             android:text="Capacity TextView"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
             <!--app:layout_constraintStart_toStartOf="@+id/name_tv"
             app:layout_constraintTop_toBottomOf="@+id/name_tv"-->
     </TableRow>
@@ -97,7 +98,8 @@
             android:layout_marginStart="10dp"
             android:text="Phone"
             android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
         <!--app:layout_constraintStart_toStartOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView18"-->
 
@@ -108,7 +110,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
             android:text="Phone TextView"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
             <!--app:layout_constraintStart_toStartOf="@+id/address_tv"
             app:layout_constraintTop_toBottomOf="@+id/address_tv"-->
     </TableRow>
@@ -122,7 +125,8 @@
             android:layout_marginStart="10dp"
             android:text="Address"
             android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
             <!--app:layout_constraintStart_toStartOf="@+id/textView19"
             app:layout_constraintTop_toBottomOf="@+id/textView19" -->
 
@@ -134,7 +138,8 @@
             android:layout_marginStart="15dp"
             android:inputType="textMultiLine"
             android:text="Address TextView"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,TextViewEdits" />
             <!--app:layout_constraintStart_toStartOf="@+id/latitiude_tv"
             app:layout_constraintTop_toBottomOf="@+id/latitiude_tv"-->
     </TableRow>
@@ -143,12 +148,14 @@
 
         <EditText
             android:id="@+id/reserve_number_box"
+            android:labelFor="@id/reserve_number_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
             android:inputType="number"
-            android:text="0" />
+            android:text="0"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/reserve_btn"
@@ -157,7 +164,8 @@
             android:layout_marginStart="100dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="30dp"
-            android:text="Reserve Spot(s)" />
+            android:text="Reserve Spot(s)"
+            tools:ignore="HardcodedText" />
     </TableRow>
 
     <TableRow>
@@ -170,7 +178,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:background="@android:color/holo_red_light"
-            android:text="Release Spot(s)" />
+            android:text="Release Spot(s)"
+            tools:ignore="HardcodedText" />
     </TableRow>
 
 </TableLayout>

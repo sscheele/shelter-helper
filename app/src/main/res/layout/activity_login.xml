@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android=
+    "http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,11 +17,13 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
 
     <EditText
         android:id="@+id/tb_username"
+        android:labelFor="@id/tb_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -38,7 +41,8 @@
         android:layout_marginTop="13dp"
         android:text="Username"
         app:layout_constraintStart_toStartOf="@+id/tb_username"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btn_login"
@@ -49,10 +53,12 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_password" />
+        app:layout_constraintTop_toBottomOf="@+id/tb_password"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/tb_password"
+        android:labelFor="@id/tb_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -67,7 +73,8 @@
         android:layout_height="wrap_content"
         android:text="Password"
         app:layout_constraintBottom_toTopOf="@+id/tb_password"
-        app:layout_constraintStart_toStartOf="@+id/tb_password" />
+        app:layout_constraintStart_toStartOf="@+id/tb_password"
+        tools:ignore="HardcodedText" />
 
 
 </android.support.constraint.ConstraintLayout>

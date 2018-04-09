@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+@SuppressWarnings("ChainedMethodCall")
 public class RegisterActivity extends AppCompatActivity {
 
     @Override

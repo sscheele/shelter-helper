@@ -1,5 +1,7 @@
 package com.a2340.shelterhelper;
 
+import android.support.annotation.Nullable;
+
 import com.google.firebase.database.DataSnapshot;
 
 import org.junit.After;
@@ -60,6 +62,7 @@ public class ExampleUnitTest {
     *Unit test for onChildChanged() in MainActivity.java
     *@author Sanskriti Rathi
     */
+    @Nullable
     private java.util.List shelters;
 
     @Before

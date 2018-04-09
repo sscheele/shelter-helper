@@ -5,6 +5,7 @@ android {
     defaultConfig {
         applicationId "com.a2340.shelterhelper"
         minSdkVersion 21
+        //noinspection OldTargetApi
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"

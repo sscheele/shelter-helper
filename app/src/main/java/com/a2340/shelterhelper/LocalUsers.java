@@ -15,13 +15,15 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sam on 3/28/18.
  */
 
+@SuppressWarnings({"UtilityClass", "ChainedMethodCall"})
 public class LocalUsers {
-    private static ArrayList<User> allUsers = new ArrayList<>();
+    private static List<User> allUsers = new ArrayList<>();
     private static User currentUser;
 
     public static void readInUsers(Context c) {
