@@ -9,17 +9,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by sam on 3/28/18.
  */
 
-@SuppressWarnings({"UtilityClass", "ChainedMethodCall", "BooleanMethodIsAlwaysInverted", "LawOfDemeter", "DefaultFileTemplate"})
+@SuppressWarnings({"UtilityClass", "ChainedMethodCall", "BooleanMethodIsAlwaysInverted",
+        "LawOfDemeter", "DefaultFileTemplate"})
 class LocalUsers {
-    private static List<User> allUsers = new ArrayList<>();
+    private static Collection<User> allUsers = new ArrayList<>();
     private static User currentUser;
 
     public static void readInUsers(Context c) {
@@ -40,7 +43,8 @@ class LocalUsers {
         return currentUser;
     }
 
-    public static boolean tryLogin(String username, String password, EditText userBox, EditText passBox) {
+    public static boolean tryLogin(String username, String password, EditText userBox,
+                                   EditText passBox) {
         User match = findByUsername(username);
         if (match == null) {
             userBox.setBackgroundColor(Color.RED);
@@ -58,7 +62,7 @@ class LocalUsers {
         allUsers.add(u);
         try {
             FileOutputStream fos = new FileOutputStream(new File(c.getFilesDir(), "allUsers"));
-            ObjectOutputStream os = new ObjectOutputStream(fos);
+            ObjectOutput os = new ObjectOutputStream(fos);
             os.writeObject(allUsers);
             os.close();
             fos.close();

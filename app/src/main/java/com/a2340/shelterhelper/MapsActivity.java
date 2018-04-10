@@ -44,14 +44,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if (MainActivity.searchQuery == null) {
             for (int i = 0; i < MainActivity.shelters.size(); i++) {
-                LatLng shelterLocation = new LatLng(MainActivity.shelters.get(i).latitude, MainActivity.shelters.get(i).longitude);
-                mMap.addMarker(new MarkerOptions().position(shelterLocation).title(MainActivity.shelters.get(i).name + " " + MainActivity.shelters.get(i).phone));
+                LatLng shelterLocation = new LatLng(MainActivity.shelters.get(i).latitude,
+                        MainActivity.shelters.get(i).longitude);
+                mMap.addMarker(new MarkerOptions().position(shelterLocation).
+                        title(MainActivity.shelters.get(i).name + " "
+                                + MainActivity.shelters.get(i).phone));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(shelterLocation));
             }
         } else {
             for (int i = 0; i < ShelterAdapter.filteredArrList.size(); i++) {
-                LatLng shelterLocation = new LatLng(ShelterAdapter.filteredArrList.get(i).latitude, ShelterAdapter.filteredArrList.get(i).longitude);
-                mMap.addMarker(new MarkerOptions().position(shelterLocation).title(ShelterAdapter.filteredArrList.get(i).name + " " + ShelterAdapter.filteredArrList.get(i).phone));
+                LatLng shelterLocation = new LatLng(ShelterAdapter.filteredArrList.get(i).
+                        latitude, ShelterAdapter.filteredArrList.get(i).longitude);
+                mMap.addMarker(new MarkerOptions().position(shelterLocation).
+                        title(ShelterAdapter.filteredArrList.get(i).name + " "
+                                + ShelterAdapter.filteredArrList.get(i).phone));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(shelterLocation));
             }
         }

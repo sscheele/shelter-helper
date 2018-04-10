@@ -2,13 +2,13 @@ package com.a2340.shelterhelper;
 
 import android.support.annotation.Nullable;
 
-import com.google.firebase.database.DataSnapshot;
+//import com.google.firebase.database.DataSnapshot;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -19,16 +19,21 @@ import static org.junit.Assert.*;
  */
 @SuppressWarnings("LawOfDemeter")
 public class ExampleUnitTest {
+    /**
+     * test to check if addition is correct
+     * @throws Exception catches exception
+     */
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
-    /*
-    *Unit test for findByUsername() in LocalUsers.java
-    *@author Pallavi Chetia
-    */
+    /**
+     * test to check is user is null
+     * @author Pallavi Chetia
+     * @throws Exception catches exception
+     */
     @Test
-    public void findByUsername_NullTest() {
+    public void findByUsername_NullTest() throws Exception {
         User testUser = createUserforTest("null", "null");
         assertEquals("null", testUser.getUsername());
         assertEquals("null", testUser.getPassword());
@@ -38,19 +43,17 @@ public class ExampleUnitTest {
         return (new User("User1", username, password, true));
 
     }
-     
-    /*
-    *Unit test for tryLogin() in LocalUsers.java
-    *@author Aarti Thapar
-    */
-    private Shelter createShelterforTest(String address, String key, String name) {
-        return (new Shelter("Peachtree", 30, 78.90, 56.00,
-                "4072476879", 7891, "Shelter1",
-                "notes1", "null", "Yes" ));
-    }
+
+    /**
+     * test to check tryLogin method
+     * @author Aarti Thapar
+     * @throws Exception catches exception
+     */
+
+
 
     @Test
-    public void tryLogin_NullTest() {
+    public void tryLogin_NullTest() throws Exception{
         User testUser = createUserforTest("null", "");
         assertEquals("null", testUser.getUsername());
         assertEquals("null", testUser.getPassword());
@@ -59,23 +62,30 @@ public class ExampleUnitTest {
         assertEquals("123", testUser2.getPassword());
     }
      
-    /*
-    *Unit test for onChildChanged() in MainActivity.java
-    *@author Sanskriti Rathi
-    */
+
     @Nullable
     private java.util.List shelters;
-
+    /**
+     * setUp of the test
+     */
     @Before
     public void setUp() {
         shelters = new java.util.ArrayList<>();
     }
+    /**
+     * teardown of the test
+     */
     @After
     public void teardown() {
         shelters = null;
     }
+    /**
+     * test to check for size of shelters
+     * @author Sanskriti Rathi
+     * @throws Exception catches exception
+     */
     @Test
-    public void onChildChanged_SizeTest() {
+    public void onChildChanged_SizeTest() throws Exception {
         assertEquals("An empty shelterList should have size zero", 0,
                 shelters.size());
     }

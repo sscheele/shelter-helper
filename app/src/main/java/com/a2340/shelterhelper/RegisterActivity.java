@@ -9,22 +9,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-@SuppressWarnings("ChainedMethodCall")
+@SuppressWarnings("ALL")
+/**
+ * a method to create RegisterActivity
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Button registerBtn = (Button) findViewById(R.id.btn_register);
+        Button registerBtn = findViewById(R.id.btn_register);
         final Activity currActivity = this;
         registerBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = ((EditText) findViewById(R.id.register_tb_name)).getText().toString();
-                String username = ((EditText) findViewById(R.id.register_tb_username)).getText().toString();
-                String password = ((EditText) findViewById(R.id.register_tb_password)).getText().toString();
-                boolean isAdmin = ((RadioButton) findViewById(R.id.register_rb_isAdmin)).isChecked();
+                String username = ((EditText) findViewById(R.id.register_tb_username))
+                        .getText().toString();
+                String password = ((EditText) findViewById(R.id.register_tb_password))
+                        .getText().toString();
+                boolean isAdmin = ((RadioButton) findViewById(R.id.register_rb_isAdmin))
+                        .isChecked();
                 User newUser = new User(name, username, password, isAdmin);
                 LocalUsers.register(currActivity, newUser);
                 finish();
