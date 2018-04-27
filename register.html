@@ -2,6 +2,7 @@
 
 <head>
     <link href="/shelter-helper/res/css/materialize.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Shelter Helper</title>
 </head>
 
@@ -9,6 +10,9 @@
     <nav class="blue">
         <div class="nav-wrapper">
             <a href="/shelter-helper/" class="brand-logo center">Shelter Helper</a>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     <a href="/shelter-helper/index.html">Home</a>
@@ -22,12 +26,24 @@
             </ul>
         </div>
     </nav>
+    <ul id="nav-mobile" class="sidenav">
+        <li>
+            <a href="/shelter-helper/index.html">Home</a>
+        </li>
+        <li>
+            <a href="/shelter-helper/register.html">Register</a>
+        </li>
+        <li>
+            <a href="/shelter-helper/login.html">Log In</a>
+        </li>
+    </ul>
     <div class="row" style="margin-top: 10vh">
         <div class="col s12 l4 offset-l4">
             <div class="card-panel" style="width: 100%">
                 <h2 class="center" style="margin-top: 0px">Register</h2>
                 <form>
                     <input type="text" placeholder="Email" id="username">
+                    <input type="text" placeholder="Name" id="name">
                     <input type="password" placeholder="Password" id="password">
                     <div class="center">
                         <button class="btn green waves-effect" id="registerbtn">Register</button>
@@ -39,6 +55,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="/shelter-helper/res/js/jquery.min.js"></script>
+    <script src="/shelter-helper/res/js/materialize.min.js"></script>
     <script>
         var config = {
             apiKey: "AIzaSyBHJWGNETFApjjO2EJKmwjBf8JM45AV7NM",
@@ -48,12 +65,44 @@
             storageBucket: "shelter-helper.appspot.com",
             messagingSenderId: "513616376080"
         };
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
         firebase.initializeApp(config);
         $("#registerbtn").click((event) => {
             event.preventDefault();
             firebase.auth().createUserWithEmailAndPassword($("#username").val(), $("#password").val()).catch((error) => {
                 console.log(error);
                 alert("Unable to create account");
+            }).then(() => {
+                firebase.auth().signInWithEmailAndPassword($("#username").val(), $("#password").val()).then((user) => {
+                    if (!user) {
+                        console.log("Failing New York Times");
+                    }
+                    var database = firebase.database();
+                    console.log(user.uid);
+                    var usersref = database.ref("user_info/" +user.uid);
+                    usersref.set({
+                        "name": $("#name").val(),
+                        "key": user.uid,
+                        "numReserved": 0,
+                        "reservedAt": "",
+                        "banned": false
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                    if (!user.emailVerified) {
+                        user.sendEmailVerification().then(function () {
+                            alert("We sent you an email to verify your account!");
+                        }, function (error) {
+                            alert("Email sending error!");
+                        });
+                    } else {
+                        window.location.href = "http://sscheele.github.io/shelter-helper/index.html";
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });
             });
         });
     </script>

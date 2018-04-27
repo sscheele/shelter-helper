@@ -35,13 +35,7 @@ angular.module('main', [])
                 //alert("Signed in as " + JSON.stringify(user));
                 database.ref("user_info/" + user.uid).once('value', (snapshot) => {
                     if (!snapshot.val()) {
-                        firebase.database().ref('user_info/' + user.uid).set({
-                            "name": "Sam",
-                            "key": user.uid,
-                            "numReserved": 0,
-                            "reservedAt": "",
-                            "banned": false
-                        });
+                        alert("Error!");
                     } else {
                         $scope.currUser = snapshot.val();
                         while ($scope.$$phase) {}

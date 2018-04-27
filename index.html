@@ -2,6 +2,7 @@
 
 <head>
     <link href="/shelter-helper/res/css/materialize.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Shelter Helper</title>
     <style>
         #map {
@@ -22,7 +23,7 @@
 <body ng-controller="MainCtrl">
     <nav class="blue">
         <div class="nav-wrapper">
-            <span class="left" ng-show="currUser != null" style="margin-left: 2vw">Hi, {{currUser.name}}</span>
+            <span class="right" ng-show="currUser != null" style="margin-right: 2vw">Hi, {{currUser.name}}</span>
             <a href="/shelter-helper/" class="brand-logo center">Shelter Helper</a>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
@@ -105,10 +106,12 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="/shelter-helper/res/js/jquery.min.js"></script>
     <script src="/shelter-helper/res/js/angular.min.js"></script>
+    <script src="/shelter-helper/res/js/materialize.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnjAn2vwHs-2YFfrUo_b7_s-68SxcyR4E&callback=initMap"></script>
     <script src="/shelter-helper/res/js/app.js"></script>
     <script>
         var map;
+        //M.AutoInit();
         $(document).ready(function () {
             $('.sidenav').sidenav();
         });
