@@ -53,11 +53,13 @@
             event.preventDefault();
             console.log("Clicked");
             console.log($("#username").val(), $("#password").val());
-            firebase.auth().signInWithEmailAndPassword($("#username").val(), $("#password").val()).catch((error) => {
+            firebase.auth().signInWithEmailAndPassword($("#username").val(), $("#password").val()).then((user) => {
+                if (user) {
+                    window.location.href = "http://sscheele.github.io/shelter-helper/index.html";
+                }
+            }).catch((error) => {
                 alert("WRONG");
                 return;
-            }).then((val) => {
-                window.location.href = "http://sscheele.github.io/shelter-helper/index.html";
             });
         });
     </script>
