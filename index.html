@@ -22,7 +22,7 @@
 <body ng-controller="MainCtrl">
     <nav class="blue">
         <div class="nav-wrapper">
-            <span class="left" ng-show="loggedIn" style="margin-left: 2vw">Hi, {{name}}</span>
+            <span class="left" ng-show="currUser != null" style="margin-left: 2vw">Hi, {{currUser.name}}</span>
             <a href="/shelter-helper/" class="brand-logo center">Shelter Helper</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
@@ -37,7 +37,7 @@
             </ul>
         </div>
     </nav>
-    <div ng-show="loggedIn">
+    <div ng-show="currUser != null">
         <div class="row">
             <div class="col s12 l10 offset-l1">
                 <div id="map"></div>
@@ -67,10 +67,10 @@
                                         <span></span>
                                 </label>
                             </td>
-                            <td><button class="btn" ng-show="shelter.name == reservedAt" ng-click="releaseShelter(shelter)">
+                            <td><button class="btn" ng-show="shelter.name == currUser.reservedAt" ng-click="releaseShelter(shelter)">
                                 Release
                                 </button>
-                                <button class="btn" ng-show="numReserved == 0" ng-click="reserveShelter(shelter)">
+                                <button class="btn" ng-show="currUser.numReserved == 0" ng-click="reserveShelter(shelter)">
                                     Reserve
                                     </button></td>
                         </tr>
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <div class="row" ng-hide="loggedIn">
+    <div class="row" ng-hide="currUser != null">
         <h2 class="center">Welcome! Please sign in or register.</h2>
     </div>
 
