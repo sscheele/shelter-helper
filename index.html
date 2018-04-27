@@ -14,7 +14,7 @@
         }
 
         .clickable-row:hover {
-            background-color:rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -24,7 +24,21 @@
         <div class="nav-wrapper">
             <span class="left" ng-show="currUser != null" style="margin-left: 2vw">Hi, {{currUser.name}}</span>
             <a href="/shelter-helper/" class="brand-logo center">Shelter Helper</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/shelter-helper/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/shelter-helper/register.html">Register</a>
+                </li>
+                <li>
+                    <a href="/shelter-helper/login.html">Log In</a>
+                </li>
+            </ul>
+            <ul id="nav-mobile" class="sidenav">
                 <li>
                     <a href="/shelter-helper/index.html">Home</a>
                 </li>
@@ -63,16 +77,18 @@
                             <td ng-click="alert('hi')">{{shelter.restrictions}}</td>
                             <td>
                                 <label>
-                                        <input type="checkbox" class="center" ng-click="toggleShelter(shelter)"/>
-                                        <span></span>
+                                    <input type="checkbox" class="center" ng-click="toggleShelter(shelter)" />
+                                    <span></span>
                                 </label>
                             </td>
-                            <td><button class="btn" ng-show="shelter.name == currUser.reservedAt" ng-click="releaseShelter(shelter)">
-                                Release
+                            <td>
+                                <button class="btn" ng-show="shelter.name == currUser.reservedAt" ng-click="releaseShelter(shelter)">
+                                    Release
                                 </button>
                                 <button class="btn" ng-show="currUser.numReserved == 0" ng-click="reserveShelter(shelter)">
                                     Reserve
-                                    </button></td>
+                                </button>
+                            </td>
                         </tr>
                     </table>
                 </form>
@@ -85,7 +101,7 @@
     </div>
 
 
-    
+
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="/shelter-helper/res/js/jquery.min.js"></script>
     <script src="/shelter-helper/res/js/angular.min.js"></script>
@@ -93,8 +109,11 @@
     <script src="/shelter-helper/res/js/app.js"></script>
     <script>
         var map;
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
         function initMap() {
-            var citycenter = {name:"Atlanta", lat: 33.7490, lng: -84.387314 };
+            var citycenter = { name: "Atlanta", lat: 33.7490, lng: -84.387314 };
             map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
                 center: citycenter
