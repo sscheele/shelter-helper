@@ -43,9 +43,8 @@ angular.module('main', [])
                             "banned": false
                         });
                     } else {
-                        $scope.currUser.numReserved = snapshot.val().numReserved;
-                        $scope.currUser.reservedAt = snapshot.val().reservedAt;
                         $scope.currUser = snapshot.val();
+                        while ($scope.$$phase) {}
                         $scope.$apply();
                     }
                 });
@@ -74,6 +73,7 @@ angular.module('main', [])
             $scope.currUser.reservedAt = shelter.name;
             $scope.currUser.numReserved = 1;
             database.ref("user_info/"+$scope.currUser.key).set($scope.currUser);
+            $scope.$apply();
         }
         $scope.releaseShelter = (shelter) => {
             let tmp = {};
@@ -84,5 +84,6 @@ angular.module('main', [])
             $scope.currUser.reservedAt = "";
             $scope.currUser.numReserved = 0;
             database.ref("user_info/"+$scope.currUser.key).set($scope.currUser);
+            $scope.$apply();
         }
     }]);
