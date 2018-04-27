@@ -65,7 +65,6 @@ angular.module('main', [])
                 });
             } else {
                 // User is signed out.
-                alert("Signed out");
                 // ...
             }
         });
