@@ -56,8 +56,9 @@
             firebase.auth().signInWithEmailAndPassword($("#username").val(), $("#password").val()).catch((error) => {
                 alert("WRONG");
                 return;
+            }).then((val) => {
+                window.location.href = "http://sscheele.github.io/shelter-helper/index.html";
             });
-            window.location.href = "http://sscheele.github.io/shelter-helper/index.html";
         });
     </script>
 </body>
