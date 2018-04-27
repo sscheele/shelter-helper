@@ -1,7 +1,7 @@
 <html ng-app="main">
 
 <head>
-    <link href="/res/css/materialize.min.css" rel="stylesheet" />
+    <link href="/shelter-helper/res/css/materialize.min.css" rel="stylesheet" />
     <title>Shelter Helper</title>
     <style>
         #map {
@@ -23,16 +23,16 @@
     <nav class="blue">
         <div class="nav-wrapper">
             <span class="left" ng-show="loggedIn" style="margin-left: 2vw">Hi, {{name}}</span>
-            <a href="/" class="brand-logo center">Shelter Helper</a>
+            <a href="/shelter-helper/" class="brand-logo center">Shelter Helper</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
-                    <a href="/index.html">Home</a>
+                    <a href="/shelter-helper/index.html">Home</a>
                 </li>
                 <li>
-                    <a href="/register.html">Register</a>
+                    <a href="/shelter-helper/register.html">Register</a>
                 </li>
                 <li>
-                    <a href="/login.html">Log In</a>
+                    <a href="/shelter-helper/login.html">Log In</a>
                 </li>
             </ul>
         </div>
@@ -87,10 +87,10 @@
 
     
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script src="/res/js/jquery.min.js"></script>
-    <script src="/res/js/angular.min.js"></script>
+    <script src="/shelter-helper/res/js/jquery.min.js"></script>
+    <script src="/shelter-helper/res/js/angular.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnjAn2vwHs-2YFfrUo_b7_s-68SxcyR4E&callback=initMap"></script>
-    <script src="/res/js/app.js"></script>
+    <script src="/shelter-helper/res/js/app.js"></script>
     <script>
         var map;
         function initMap() {
