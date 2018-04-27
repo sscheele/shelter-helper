@@ -2,10 +2,8 @@ angular.module('main', [])
     .controller("MainCtrl", ["$scope", ($scope) => {
         markers = {};
         $scope.shelters = [];
-        $scope.loggedIn = false;
         $scope.alert = (s)=>{alert(s);};
-        $scope.reservedAt = "";
-        $scope.numReserved = 0;
+        $scope.currUser = null;
         $scope.toggleShelter = (shelter) => {
             //console.log(JSON.stringify(shelter));
             if (markers.hasOwnProperty(shelter.name)) {
@@ -41,14 +39,13 @@ angular.module('main', [])
                             "name": "Sam",
                             "key": user.uid,
                             "numReserved": 0,
-                            "reservedAt": "None",
+                            "reservedAt": "",
                             "banned": false
                         });
                     } else {
-                        $scope.numReserved = snapshot.val().numReserved;
-                        $scope.reservedAt = snapshot.val().reservedAt;
-                        $scope.name = snapshot.val().name;
-                        $scope.loggedIn = true;
+                        $scope.currUser.numReserved = snapshot.val().numReserved;
+                        $scope.currUser.reservedAt = snapshot.val().reservedAt;
+                        $scope.currUser = snapshot.val();
                         $scope.$apply();
                     }
                 });
@@ -74,8 +71,9 @@ angular.module('main', [])
             tmp.capacity = tmp.capacity - 1;
             delete tmp["$$hashKey"];
             database.ref("shelters/"+shelter.key).set(tmp);
-            $scope.reservedAt = shelter.name;
-            $scope.numReserved = 1;
+            $scope.currUser.reservedAt = shelter.name;
+            $scope.currUser.numReserved = 1;
+            database.ref("user_info/"+$scope.currUser.key).set($scope.currUser);
         }
         $scope.releaseShelter = (shelter) => {
             let tmp = {};
@@ -83,7 +81,8 @@ angular.module('main', [])
             tmp.capacity = tmp.capacity + 1;
             delete tmp["$$hashKey"];
             database.ref("shelters/"+shelter.key).set(tmp);
-            $scope.reservedAt = "";
-            $scope.numReserved = 0;
+            $scope.currUser.reservedAt = "";
+            $scope.currUser.numReserved = 0;
+            database.ref("user_info/"+$scope.currUser.key).set($scope.currUser);
         }
     }]);
