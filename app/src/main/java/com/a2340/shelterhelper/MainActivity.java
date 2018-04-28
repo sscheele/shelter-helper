@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 //import com.google.firebase.FirebaseApp;
 //import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,16 +41,15 @@ public class MainActivity extends AppCompatActivity {
         final ListView shelterListView = (ListView) findViewById(R.id.listview_shelter);
         //final ArrayList<String> shelterNames = new ArrayList<>();
         //noinspection AssignmentToStaticFieldFromInstanceMethod
-        shelters = new ArrayList<>();
+        shelters = new ArrayList<Shelter>();
         listAdapter = new ShelterAdapter(this, shelters);
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("shelters");
         mDatabase.keepSynced(true);
         mDatabase.orderByChild("name").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Shelter newShelter = dataSnapshot.getValue(Shelter.class);
-                //listAdapter.add(newShelter);
                 shelters.add(newShelter);
                 listAdapter.notifyDataSetChanged();
                 Log.i("SHELTADD", "" + newShelter.key);
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(currActivity, LandingScreen.class);
                 startActivity(i);
                 //finish();
