@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+@SuppressWarnings("ALL")
 public class SearchActivity extends AppCompatActivity {
 
     public static String filterCategory;
@@ -52,8 +53,10 @@ public class SearchActivity extends AppCompatActivity {
         cancelBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //ShelterAdapter.filteredArrList = MainActivity.shelters;
                 Intent i = new Intent(currActivity, MainActivity.class);
                 startActivity(i);
+
                 //finish();
             }
         });

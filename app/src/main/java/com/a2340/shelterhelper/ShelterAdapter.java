@@ -1,5 +1,6 @@
 package com.a2340.shelterhelper;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,26 +12,31 @@ import android.content.Context;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sanskriti on 3/14/18.
  */
 
+@SuppressWarnings("ALL")
 public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable {
 
-    private ArrayList<Shelter> shelterArray;
-    private ArrayList<Shelter> origShelterArray;
+    private final ArrayList<Shelter> shelterArray;
+    public static List<Shelter> origShelterArray;
+    public static List<Shelter> filteredArrList;
 
     public ShelterAdapter(Context context, ArrayList<Shelter> list) {
         super(context, 0, list);
         this.shelterArray = list;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
         if(listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.array_adapter_item, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.array_adapter_item,
+                    parent, false);
         }
 
         Shelter shelter = getItem(position);
@@ -61,20 +67,23 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
 
             @Override
             protected FilterResults performFiltering(final CharSequence constraint) {
-                final FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
-                final ArrayList<Shelter> filteredArrList = new ArrayList();
+                final FilterResults results = new FilterResults();
+                // Holds the results of a filtering operation in values
+                filteredArrList = new ArrayList();
 
                 if (origShelterArray == null) {
-                    origShelterArray = new ArrayList(shelterArray); // saves the original data in mOriginalValues
+                    origShelterArray = new ArrayList(shelterArray);
+                    // saves the original data in mOriginalValues
                 }
 
                 /********
                  *
-                 *  If constraint(CharSequence that is received) is null returns the mOriginalValues(Original) values
+                 *  If constraint(CharSequence that is received) is null returns the
+                 *  mOriginalValues(Original) values
                  *  else does the Filtering and returns FilteredArrList(Filtered)
                  *
                  ********/
-                if (constraint == null || constraint.length() == 0) {
+                if ((constraint == null) || (constraint.length() == 0)) {
 
                     // set the Original result to return
                     results.count = origShelterArray.size();
@@ -137,7 +146,8 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
                                         s2_data.contains(constraint_string))) {
                                     return -1;
                                 }
-                                return s1.getName().toLowerCase().compareTo(s2.getName().toLowerCase());
+                                return s1.getName().toLowerCase()
+                                .compareTo(s2.getName().toLowerCase());
 
                             } else if (filterCategory == FilterCategories.GENDER ?
                                     s2_data.startsWith(constraint_string) :
@@ -148,7 +158,8 @@ public class ShelterAdapter extends ArrayAdapter<Shelter> implements Filterable 
                             int diff = FuzzySearch.tokenSetRatio(constraint_string, s2_data) -
                                     FuzzySearch.tokenSetRatio(constraint_string, s1_data);
                             if (diff == 0) {
-                                return s1.getName().toLowerCase().compareTo(s2.getName().toLowerCase());
+                                return s1.getName()
+                                .toLowerCase().compareTo(s2.getName().toLowerCase());
                             }
 
                             return diff;

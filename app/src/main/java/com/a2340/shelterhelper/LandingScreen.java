@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+@SuppressWarnings("ALL")
 public class LandingScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_screen);
-        Button loginBtn = (Button) findViewById(R.id.btn_landing_login);
+        Button loginBtn = findViewById(R.id.btn_landing_login);
         final Activity currActivity = this;
         loginBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -22,7 +23,7 @@ public class LandingScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        Button registerBtn = (Button) findViewById(R.id.btn_landing_register);
+        Button registerBtn = findViewById(R.id.btn_landing_register);
         registerBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {

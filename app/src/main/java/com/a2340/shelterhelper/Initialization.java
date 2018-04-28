@@ -1,5 +1,6 @@
 package com.a2340.shelterhelper;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Intent;
 
@@ -10,7 +11,9 @@ import com.google.firebase.FirebaseOptions;
  * Created by sam on 3/7/18.
  */
 
-public class Initialization extends Application{
+@SuppressLint("Registered")
+@SuppressWarnings({"ChainedMethodCall", "DefaultFileTemplate"})
+class Initialization extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
