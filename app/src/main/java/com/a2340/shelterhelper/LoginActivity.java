@@ -68,9 +68,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             is.close();
             fis.close();
 
-            if (attempts.size() == 3 && attempts.get(attempts.size() - 1).isAfter(Instant.now().minus(Duration.ofHours(1)))){
-                Toast.makeText(LoginActivity.this, "You are locked out! Please wait an hour.", Toast.LENGTH_LONG).show();
-                return;
+            if (attempts.size() == 3) {
+                if (attempts.get(attempts.size() - 1).isAfter(Instant.now().minus(Duration.ofHours(1)))) {
+                    Toast.makeText(LoginActivity.this, "You are locked out! Please wait an hour.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                attempts = new ArrayList<>();
+                FileOutputStream fos = new FileOutputStream(new File(currActivity.getFilesDir(), "loginAttempts"));
+                ObjectOutput os = new ObjectOutputStream(fos);
+                os.writeObject(attempts);
+                os.close();
+                fos.close();
             }
         } catch (IOException e) {
             //do nothing - this just means there have been no bad attempts
