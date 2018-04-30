@@ -18,6 +18,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+
 @SuppressWarnings("ALL")
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
@@ -49,6 +60,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }*/
 
+        try {
+            FileInputStream fis = new FileInputStream(new File(currActivity.getFilesDir(), "loginAttempts"));
+            ObjectInputStream is = new ObjectInputStream(fis);
+            //noinspection unchecked
+            ArrayList<Instant> attempts = (ArrayList<Instant>) is.readObject();
+            is.close();
+            fis.close();
+
+            if (attempts.size() == 3 && attempts.get(attempts.size() - 1).isAfter(Instant.now().minus(Duration.ofHours(1)))){
+                Toast.makeText(LoginActivity.this, "You are locked out! Please wait an hour.", Toast.LENGTH_LONG).show();
+                return;
+            }
+        } catch (IOException e) {
+            //do nothing - this just means there have been no bad attempts
+        } catch (ClassNotFoundException e) {
+            Log.i("Login", "Could not deserialize from attempts file");
+            return;
+        }
+
+
         mAuth.signInWithEmailAndPassword(username, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -70,6 +101,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                            ArrayList<Instant> attempts;
+                            try {
+                                FileInputStream fis = new FileInputStream(new File(currActivity.getFilesDir(), "loginAttempts"));
+                                ObjectInputStream is = new ObjectInputStream(fis);
+                                //noinspection unchecked
+                                attempts = (ArrayList<Instant>) is.readObject();
+                                is.close();
+                                fis.close();
+                            } catch (IOException e) {
+                                attempts = new ArrayList<>();
+                                Log.i("Login (failed attempt)", Log.getStackTraceString(e));
+                            } catch (ClassNotFoundException e) {
+                                Log.i("Login", "Could not deserialize from attempts file");
+                                return;
+                            }
+                            attempts.add(Instant.now());
+                            try {
+                                FileOutputStream fos = new FileOutputStream(new File(currActivity.getFilesDir(), "loginAttempts"));
+                                ObjectOutput os = new ObjectOutputStream(fos);
+                                os.writeObject(attempts);
+                                os.close();
+                                fos.close();
+                                if (attempts.size() == 3) {
+                                    Toast.makeText(LoginActivity.this, "You are locked out! Please wait an hour.", Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            } catch (IOException e) {
+                                attempts = new ArrayList<>();
+                                Log.i("Login (failed attempt)", Log.getStackTraceString(e));
+                            }
                             //updateUI(null);
                         }
                     }
