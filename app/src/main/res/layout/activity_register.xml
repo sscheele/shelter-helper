@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android=
+    "http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.a2340.shelterhelper.RegisterActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <EditText
+        android:id="@+id/register_tb_name"
+        android:labelFor="@id/register_tb_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/register_tb_username"
+        android:labelFor="@id/register_tb_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/register_tb_name"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+
+    <EditText
+        android:id="@+id/register_tb_password"
+        android:labelFor="@id/register_tb_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/register_tb_username"
+        app:layout_constraintTop_toBottomOf="@+id/register_tb_username" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="User type"
+        app:layout_constraintStart_toStartOf="@+id/register_tb_password"
+        app:layout_constraintTop_toBottomOf="@+id/register_tb_password"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password (Min 6 characters)"
+        app:layout_constraintBottom_toTopOf="@+id/register_tb_password"
+        app:layout_constraintStart_toStartOf="@+id/register_tb_password"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="Email Address"
+        app:layout_constraintStart_toStartOf="@+id/register_tb_username"
+        app:layout_constraintTop_toBottomOf="@+id/register_tb_name"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="73dp"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="7dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" >
+
+        <RadioButton
+            android:id="@+id/register_rb_isUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="97dp"
+            android:checked="true"
+            android:text="Regular"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/radioGroup"
+            app:layout_constraintTop_toTopOf="@+id/radioGroup"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/register_rb_isAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:text="Admin"
+            app:layout_constraintStart_toStartOf="@+id/register_rb_isUser"
+            app:layout_constraintTop_toBottomOf="@+id/register_rb_isUser"
+            tools:ignore="HardcodedText" />
+
+
+
+    </RadioGroup>
+
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="22dp"
+        android:text="Sign Up!"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:ignore="HardcodedText" />
+</android.support.constraint.ConstraintLayout>

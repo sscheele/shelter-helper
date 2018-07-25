@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "513616376080",
+    "firebase_url": "https://shelter-helper.firebaseio.com",
+    "project_id": "shelter-helper",
+    "storage_bucket": "shelter-helper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513616376080:android:2ccd4eabd1baab64",
+        "android_client_info": {
+          "package_name": "com.a2340.shelterhelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513616376080-aepor2ngndd4v0qvfj0a14suon9fd0or.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQpy_zGinxjE5MT-0saeZpi-ldwCMw63M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
